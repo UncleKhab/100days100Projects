@@ -1,0 +1,56 @@
+<mat-drawer-container class="h-100v">
+  <mat-drawer
+    mode="side"
+    [opened]="displayDrawer"
+    style="width: 15%; text-align: center"
+  >
+    <h1 style="padding-top: 10px; font-weight: bold">Receipar</h1>
+    <hr />
+    <a
+      mat-button
+      style="width: 100%; border-bottom: 1px solid #e1e1e1"
+      routerLink="/recipes"
+    >
+      <div style="overflow: hidden; margin: auto">Random Recipe</div>
+    </a>
+    <a
+      mat-button
+      style="width: 100%; border-bottom: 1px solid #e1e1e1"
+      routerLink="/shopping-list"
+    >
+      <div style="overflow: hidden; margin: auto">Shopping List</div>
+    </a>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<!-- <div>
+      <h1 style="padding: 10px">Previous Recipes</h1>
+      <hr />
+      <div
+        *ngIf="cachedRecipes.length"
+        style="margin-bottom: 20px"
+        class="flex-col"
+      >
+        <button
+          mat-button
+          *ngFor="let recipe of cachedRecipes; let i = index"
+          style="max-width: 100%"
+          (click)="onLoadCachedRecipe(i)"
+        >
+          <div
+            style="
+              max-width: 90%;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              margin: auto;
+            "
+          >
+            {{ recipe.title }}
+          </div>
+        </button>
+        <hr />
+      </div>
+    </div> -->

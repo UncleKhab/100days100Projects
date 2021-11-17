@@ -1,0 +1,33 @@
+<div class="container">
+  <div *ngIf="!shoppingList.length">
+    <h2>There are no ingredients in your shopping list</h2>
+  </div>
+  <div *ngIf="shoppingList.length">
+    <h2>Your Shopping List</h2>
+    <hr />
+    <mat-selection-list
+      #ingredients
+      role="list"
+      color="accent"
+      class="p-2"
+      aria-label="ingredients"
+      style="
+        width: 70%;
+        margin: auto;
+        background-color: aliceblue;
+        box-shadow: 2px 3px 6px #0000003b; ;
+      "
+    >
+      <mat-list-option
+        role="listitem"
+        *ngFor="let ingredient of shoppingList"
+        [value]="ingredient"
+      >
+        <div style="display: flex; justify-content: space-between">
+          <span style="flex: 4">{{ ingredient.qty }}</span>
+          <span style="flex: 8; margin-left: 5px">{{ ingredient.title }}</span>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

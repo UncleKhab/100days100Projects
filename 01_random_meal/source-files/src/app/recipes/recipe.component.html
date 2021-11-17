@@ -1,0 +1,80 @@
+<div class="flex justify-center align-center h-100 flex-col" *ngIf="!recipe">
+  <h1 class="mat-h1">{{ title }}</h1>
+  <button mat-raised-button color="primary" (click)="fetchRecipe()">
+    Get Recipe
+  </button>
+</div>
+<div *ngIf="recipe" class="container">
+  <div class="flex">
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="fetchRecipe()"
+        style="margin-right: 10px"
+      >
+        Get Another Recipe
+      </button>
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="onAddToShoppingList()"
+        style="margin-right: 10px"
+      >
+        Add To Shopping List
+      </button>
+    </div>
+  </div>
+  <hr />
+  <div class="flex">
+    <div class="col left-col max-w-50" style="margin-right: 10px">
+      <h1 class="mat-h1">{{ recipe.title }}</h1>
+      <img [src]="recipe.imageUrl" style="max-width: 100%; max-height: 80%" />
+      <a
+        mat-raised-button
+        [href]="recipe.videoUrl"
+        target="_blank"
+        style="background-color: rgb(199, 12, 12); color: white"
+        >Watch On Youtube</a
+      >
+    </div>
+    <div class="col">
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Ingredients">
+          <mat-selection-list
+            #ingredients
+            role="list"
+            color="accent"
+            class="p-2"
+            aria-label="ingredients"
+          >
+            <mat-list-item
+              ><strong style="font-size: medium; color: #646464">
+                Select ingredients and add them to you shopping list
+              </strong></mat-list-item
+            >
+            <mat-list-option
+              role="listitem"
+              *ngFor="let ingredient of recipe.ingredients"
+              [value]="ingredient"
+            >
+              <div style="display: flex; justify-content: space-between">
+                <span style="flex: 4">{{ ingredient.qty }}</span>
+                <span style="flex: 8; margin-left: 5px">{{
+                  ingredient.title
+                }}</span>
+              </div>
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-tab>
+        <mat-tab label="Instructions">
+          <p class="p-2" style="white-space: pre-wrap">
+            {{ recipe.instructions }}
+          </p>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
