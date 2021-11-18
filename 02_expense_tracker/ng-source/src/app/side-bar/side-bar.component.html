@@ -1,0 +1,42 @@
+<div class="h-100 sidebar">
+  <div class="sidebar-category">
+    <h6>ACCOUNTS</h6>
+    <ul class="sidebar-list">
+      <a href="#" class="sidebar-list-item">
+        <li class="d-flex align-items-center">
+          <div class="list-item-icon"></div>
+          City bank ltd.
+        </li>
+      </a>
+      <a href="#" class="sidebar-list-item">
+        <li class="d-flex align-items-center">
+          <div class="list-item-icon"></div>
+          Revolut Card
+        </li>
+      </a>
+      <a href="#" class="sidebar-list-item">
+        <li class="d-flex align-items-center">
+          <div class="list-item-icon"></div>
+          Savings Account
+        </li>
+      </a>
+      <button class="sidebar-list-item">
+        <li class="d-flex align-items-center">
+          <div class="button-item-icon"><i class="bi bi-plus"></i></div>
+          Add Account
+        </li>
+      </button>
+    </ul>
+  </div>
+  <div class="sidebar-category">
+    <h6>CATEGORIES</h6>
+    <ul class="sidebar-list flex flex-column">
+      <a href="#" class="sidebar-list-item" *ngFor="let category of categories">
+        <li class="d-flex align-items-center">
+          <div class="list-item-icon"></div>
+          {{ category | capitalize }}
+        </li>
+      </a>
+    </ul>
+  </div>
+</div>

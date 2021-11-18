@@ -1,0 +1,56 @@
+<div class="row">
+  <hr />
+  <form (ngSubmit)="handleSubmit()" #addForm="ngForm">
+    <div class="row">
+      <div class="form-group col-4">
+        <label for="date">Pick a date</label>
+        <input
+          type="date"
+          id="date"
+          class="form-control"
+          [(ngModel)]="date"
+          name="date"
+          required
+        />
+      </div>
+      <div class="form-group col-4">
+        <label for="date">Category</label>
+        <select
+          name="category"
+          id="category"
+          class="form-select"
+          ngModel
+          name="category"
+          required
+        >
+          <option [value]="category" *ngFor="let category of categories">
+            {{ category | capitalize }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-2">
+        <label for="amount">Amount</label>
+        <input
+          type="number"
+          id="amount"
+          class="form-control"
+          ngModel
+          name="amount"
+          required
+          min="0"
+        />
+      </div>
+
+      <div class="col-2 align-items-end d-flex">
+        <button
+          class="btn btn-success w-100"
+          type="submit"
+          [disabled]="!addForm.valid"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </form>
+  <hr class="mt-4" />
+</div>
