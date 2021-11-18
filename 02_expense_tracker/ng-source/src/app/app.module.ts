@@ -9,9 +9,11 @@ import { TransactionDatePickerComponent } from './transactions/transaction-date-
 import { TransactionsHistoryComponent } from './transactions/transactions-history/transactions-history.component';
 import { FormsModule } from '@angular/forms';
 import { CapitalizePipe } from './capitalize.pipe';
+import { ShortenDayPipe } from './shorten-day.pipe';
 
 @NgModule({
   declarations: [
+    ShortenDayPipe,
     CapitalizePipe,
     AppComponent,
     SideBarComponent,

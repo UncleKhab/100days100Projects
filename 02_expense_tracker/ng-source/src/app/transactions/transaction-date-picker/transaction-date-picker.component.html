@@ -4,33 +4,17 @@
       <span aria-hidden="true">&laquo;</span>
     </a>
   </li>
-  <li class="page-item">
-    <span>Mon</span>
-    <a class="page-link rounded" href="#">1</a>
-  </li>
-  <li class="page-item">
-    <span>Tue</span>
-    <a class="page-link rounded" href="#">2</a>
-  </li>
-  <li class="page-item">
-    <span>Wed</span>
-    <a class="page-link rounded" href="#">3</a>
-  </li>
-  <li class="page-item active">
-    <span>Thu</span>
-    <a class="page-link rounded" href="#">4</a>
-  </li>
-  <li class="page-item">
-    <span>Fri</span>
-    <a class="page-link rounded" href="#">5</a>
-  </li>
-  <li class="page-item">
-    <span>Sat</span>
-    <a class="page-link rounded" href="#">6</a>
-  </li>
-  <li class="page-item">
-    <span>Sun</span>
-    <a class="page-link rounded" href="#">7</a>
+  <li
+    [ngClass]="
+      date.getTime() === selectedDate.getTime()
+        ? 'active page-item'
+        : 'page-item'
+    "
+    *ngFor="let date of dates"
+    (click)="onSelectNewDate(date)"
+  >
+    <p class="m-0 mb-1 p-0 text-center date-day">{{ date | date: "EEE" }}</p>
+    <a class="page-link rounded" href="#">{{ date | date: "d" }}</a>
   </li>
   <li class="page-item">
     <a class="page-link" href="#" aria-label="Next">

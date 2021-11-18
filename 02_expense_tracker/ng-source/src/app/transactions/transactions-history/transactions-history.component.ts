@@ -16,7 +16,12 @@ export class TransactionsHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactions = this.transactionsService.getTransactions();
-
+    this.transactionsTotal = this.transactions.reduce(
+      (acc: number, item: Transaction) => {
+        return (acc += item.amount);
+      },
+      0
+    );
     this.transactionsServiceSub =
       this.transactionsService.notifyTransactionsChange.subscribe(
         (transactions: Transaction[]) => {

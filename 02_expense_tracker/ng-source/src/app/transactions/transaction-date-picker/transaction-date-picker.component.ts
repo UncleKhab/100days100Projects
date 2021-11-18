@@ -12,11 +12,24 @@ export class TransactionDatePickerComponent implements OnInit {
   constructor(private transactionService: TransactionsService) {}
 
   ngOnInit(): void {
+    this.createDatesArray();
+    this.transactionService.notifyDateChange.subscribe((n) => {
+      console.log(n);
+      this.selectedDate = this.transactionService.selectedDate;
+      this.createDatesArray();
+    });
+  }
+
+  onSelectNewDate(date: Date) {
+    this.transactionService.onSelectDate(date);
+  }
+  private createDatesArray() {
+    this.dates = [];
     for (let i = -3; i <= 3; i++) {
+      let newDate = new Date(this.selectedDate);
       this.dates.push(
-        new Date(this.selectedDate.setDate(this.selectedDate.getDate() + i))
+        new Date(newDate.setDate(this.selectedDate.getDate() + i))
       );
     }
-    console.log(this.dates);
   }
 }

@@ -14,7 +14,13 @@ export class TransactionAddComponent implements OnInit {
   date = this.transactionsService.selectedDate.toISOString().substr(0, 10);
   constructor(private transactionsService: TransactionsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.transactionsService.notifyDateChange.subscribe(() => {
+      this.date = this.transactionsService.selectedDate
+        .toISOString()
+        .substr(0, 10);
+    });
+  }
 
   handleSubmit() {
     const transaction: Transaction = {

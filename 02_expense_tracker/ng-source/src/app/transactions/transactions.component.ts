@@ -10,5 +10,9 @@ export class TransactionsComponent implements OnInit {
   todayDate = this.transactionsService.selectedDate;
   constructor(private transactionsService: TransactionsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.transactionsService.notifyDateChange.subscribe(() => {
+      this.todayDate = this.transactionsService.selectedDate;
+    });
+  }
 }

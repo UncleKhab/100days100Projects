@@ -22,6 +22,7 @@ export class TransactionsService {
     'rent',
   ];
   notifyTransactionsChange = new Subject<Transaction[]>();
+  notifyDateChange = new Subject<any>();
   constructor() {}
 
   onAddTransaction(transaction: Transaction) {
@@ -32,8 +33,10 @@ export class TransactionsService {
     this.transactions = this.transactions.slice(id, 1);
     this.notifyTransactionsChange.next(this.transactions.slice());
   }
-  onSelectDate(date: string) {
-    this.selectedDate = new Date(date);
+  onSelectDate(date: Date) {
+    console.log('selectiojn');
+    this.selectedDate = date;
+    this.notifyDateChange.next(date);
   }
   getTransactions() {
     return this.transactions.slice();
