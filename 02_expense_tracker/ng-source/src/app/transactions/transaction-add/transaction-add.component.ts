@@ -24,7 +24,7 @@ export class TransactionAddComponent implements OnInit {
 
   handleSubmit() {
     const transaction: Transaction = {
-      date: this.form.value.date,
+      date: new Date(this.form.value.date),
       amount: this.form.value.amount,
       category: this.form.value.category,
     };

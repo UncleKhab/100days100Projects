@@ -15,24 +15,34 @@ export class TransactionsHistoryComponent implements OnInit {
   constructor(private transactionsService: TransactionsService) {}
 
   ngOnInit(): void {
-    this.transactions = this.transactionsService.getTransactions();
+    this.transactions = this.transactionsService
+      .getTransactions()
+      .filter(
+        (transaction: Transaction) =>
+          transaction.date.getDate() ===
+          this.transactionsService.selectedDate.getDate()
+      );
     this.transactionsTotal = this.transactions.reduce(
       (acc: number, item: Transaction) => {
         return (acc += item.amount);
       },
       0
     );
-    this.transactionsServiceSub =
-      this.transactionsService.notifyTransactionsChange.subscribe(
-        (transactions: Transaction[]) => {
-          this.transactions = transactions;
-          this.transactionsTotal = this.transactions.reduce(
-            (acc: number, item: Transaction) => {
-              return (acc += item.amount);
-            },
-            0
-          );
-        }
-      );
+
+    this.transactionsService.notifyTransactionsChange.subscribe(
+      (transactions: Transaction[]) => {
+        this.transactions = transactions.filter(
+          (transaction: Transaction) =>
+            transaction.date.getDate() ===
+            this.transactionsService.selectedDate.getDate()
+        );
+        this.transactionsTotal = this.transactions.reduce(
+          (acc: number, item: Transaction) => {
+            return (acc += item.amount);
+          },
+          0
+        );
+      }
+    );
   }
 }

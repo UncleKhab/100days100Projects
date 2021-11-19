@@ -1,0 +1,18 @@
+<div class="summary-container">
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-warning text-white btn-large btn-summary">
+      Set Monthly Target
+    </button>
+  </div>
+  <div class="mt-4 px-5">
+    <h3>This months totals</h3>
+  </div>
+  <div class="pie-chart-container mt-4 border mx-5">
+    <ngx-charts-advanced-pie-chart
+      [scheme]="colorScheme"
+      [results]="single"
+      [gradient]="gradient"
+    >
+    </ngx-charts-advanced-pie-chart>
+  </div>
+</div>
